@@ -1,0 +1,42 @@
+﻿@model BhumiMehta_WebMobi.ViewModel.EmployeeViewModel
+@{
+    ViewBag.Title = "EmployeeForm";
+}
+
+
+<h2>Employee Details</h2>
+<hr />
+
+
+@using (@Html.BeginForm("Save", "Employee"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.EmployeeFirstName)
+        @Html.TextBoxFor(m => m.Employee.EmployeeFirstName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.EmployeeLastName)
+        @Html.TextBoxFor(m => m.Employee.EmployeeLastName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.EmployeeGender)
+        @Html.TextBoxFor(m => m.Employee.EmployeeGender, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.EmployeeDOB)
+        @Html.TextBoxFor(m => m.Employee.EmployeeDOB, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Employee.DepartmentId)
+        @Html.DropDownListFor(m => m.Employee.DepartmentId, new SelectList(Model.Department, "DepartmentId", "DepartmentName"), "Select Department", new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.Employee.EmployeeId)
+
+    var c = @Model.Employee.EmployeeId > 0 ? "Update" : "Save";
+    <button type="submit" class="btn btn-primary">@c</button>
+}  

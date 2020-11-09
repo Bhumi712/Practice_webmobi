@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BhumiMehta_WebMobi.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employee Details</h2>
+<hr />
+
+<button class="">@Html.ActionLink("Add Employees", "AddEmployees", "Employee")</button>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.EmployeeFirstName)</th>
+            <th>@Html.DisplayNameFor(m => m.EmployeeLastName)</th>
+            <th>@Html.DisplayNameFor(m => m.EmployeeGender)</th>
+            <th>@Html.DisplayNameFor(m => m.DepartmentId)</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        @foreach (var employees in Model)
+        {
+            <tr>
+                <td>@employees.EmployeeFirstName</td>
+                <td>@employees.EmployeeLastName</td>
+                <td>@employees.EmployeeGender</td>
+                <td>@employees.Department</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = employees.EmployeeId })</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = employees.EmployeeId })</td>
+            </tr>
+        }
+    </tbody>
+</table>  
